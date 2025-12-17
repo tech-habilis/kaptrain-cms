@@ -1,65 +1,144 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+            Next.js + Tailwind + shadcn/ui
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-slate-600 dark:text-slate-400 mb-8">
+            A modern web development stack with beautiful components
           </p>
+          <div className="flex gap-2 justify-center flex-wrap">
+            <Badge variant="secondary">Next.js 15</Badge>
+            <Badge variant="secondary">React 19</Badge>
+            <Badge variant="secondary">Tailwind CSS</Badge>
+            <Badge variant="secondary">shadcn/ui</Badge>
+            <Badge variant="secondary">TypeScript</Badge>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Demo Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <Card>
+            <CardHeader>
+              <CardTitle>Button Components</CardTitle>
+              <CardDescription>
+                Various button styles and variants
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex gap-2 flex-wrap">
+                <Button>Default</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline</Button>
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                <Button variant="destructive">Destructive</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="link">Link</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Form Elements</CardTitle>
+              <CardDescription>
+                Input fields and form components
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Input placeholder="Enter your email" type="email" />
+              <Input placeholder="Enter your name" />
+              <Button className="w-full">Submit Form</Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Dialog Component</CardTitle>
+              <CardDescription>Modal dialogs and overlays</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="w-full">
+                    Open Dialog
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Welcome to the Demo</DialogTitle>
+                    <DialogDescription>
+                      This is a sample dialog built with shadcn/ui components.
+                      It demonstrates the modal functionality with proper
+                      accessibility.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex justify-end gap-2 mt-4">
+                    <Button variant="outline">Cancel</Button>
+                    <Button>Confirm</Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </CardContent>
+          </Card>
         </div>
-      </main>
+
+        {/* Features Section */}
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-8">
+            What&apos;s Included
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="font-semibold mb-2">Next.js 15</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Latest Next.js with App Router, Server Components, and React 19
+              </p>
+            </div>
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="font-semibold mb-2">Tailwind CSS</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Utility-first CSS framework for rapid UI development
+              </p>
+            </div>
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="font-semibold mb-2">shadcn/ui</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Beautiful, accessible components built with Radix UI
+              </p>
+            </div>
+            <div className="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
+              <h3 className="font-semibold mb-2">TypeScript</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                Full type safety and excellent developer experience
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

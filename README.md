@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Tailwind + shadcn/ui Project
 
-## Getting Started
+A modern web development stack featuring Next.js 15, Tailwind CSS, and shadcn/ui components.
 
-First, run the development server:
+## 🚀 Features
+
+- **Next.js 15** - Latest version with App Router and React 19
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful, accessible components built with Radix UI
+- **TypeScript** - Full type safety
+- **ESLint** - Code linting and formatting
+
+## 🛠️ Tech Stack
+
+- [Next.js 15](https://nextjs.org/) - React framework
+- [React 19](https://react.dev/) - UI library
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Component library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Radix UI](https://www.radix-ui.com/) - Headless UI components
+- [Lucide React](https://lucide.dev/) - Icon library
+
+## 📦 Included Components
+
+The project comes with these shadcn/ui components pre-installed:
+
+- Button
+- Card
+- Input
+- Dialog
+- Badge
+
+## 🚀 Getting Started
+
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🎨 Adding More Components
+
+To add more shadcn/ui components:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx shadcn@latest add [component-name]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For example:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx shadcn@latest add table
+npx shadcn@latest add form
+npx shadcn@latest add dropdown-menu
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   └── ui/
+│   └── lib/
+│       └── utils.ts
+├── components.json
+├── tailwind.config.ts
+└── tsconfig.json
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Tailwind CSS**: Configured with CSS variables for theming
+- **shadcn/ui**: Set up with "new-york" style and neutral base color
+- **TypeScript**: Strict mode enabled
+- **ESLint**: Next.js recommended configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 Learn More
 
-## Deploy on Vercel
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [shadcn/ui Documentation](https://ui.shadcn.com)
+- [React Documentation](https://react.dev)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to contribute to this project by submitting issues or pull requests.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
