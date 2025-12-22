@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Eye, EyeOff, Check } from "lucide-react";
+import { loginUser, signInWithGoogle } from "../../lib/supabase";
 
 interface LoginFormData {
   email: string;
@@ -44,15 +44,14 @@ export function LoginForm() {
     }
 
     try {
-      const result = await signIn("credentials", {
+      const result = await loginUser({
         email: formData.email,
         password: formData.password,
-        redirect: false,
       });
 
-      if (result?.error) {
-        setError("Email ou mot de passe incorrect");
-      } else if (result?.ok) {
+      if (result.error) {
+        setError(result.error);
+      } else if (result.success) {
         router.push("/dashboard");
         router.refresh();
       }
@@ -65,9 +64,16 @@ export function LoginForm() {
 
   const handleGoogleLogin = async () => {
     try {
-      await signIn("google", { callbackUrl: "/dashboard" });
+      setIsLoading(true);
+      const result = await signInWithGoogle();
+      if (result.error) {
+        setError(result.error);
+      }
+      // If successful, the user will be redirected by Supabase
     } catch (error) {
       setError("Erreur de connexion avec Google");
+    } finally {
+      setIsLoading(false);
     }
   };
 

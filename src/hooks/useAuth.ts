@@ -51,17 +51,15 @@ export function useRole() {
   };
 
   const isAdmin = (): boolean => hasRole("admin");
-  const isEditor = (): boolean => hasRole("editor");
-  const isAuthor = (): boolean => hasRole("author");
-  const isViewer = (): boolean => hasRole("viewer");
+  const isSuperAdmin = (): boolean => hasRole("superadmin");
+  const isUser = (): boolean => hasRole("user");
 
   return {
     userRole,
     hasRole,
     canPerform,
     isAdmin,
-    isEditor,
-    isAuthor,
-    isViewer,
+    isSuperAdmin,
+    isUser,
   };
 }

@@ -100,6 +100,8 @@ export interface RegisterResult {
     id: string;
     email: string;
     name?: string;
+    first_name?: string;
+    last_name?: string;
     role: UserRole;
   };
   error?: string;
@@ -579,4 +581,69 @@ export function createAuthenticatedClient(supabaseAccessToken: string) {
       },
     }
   );
+}
+// Google OAuth functions
+export async function signInWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback`,
+      queryParams: {
+        access_type: 'offline',
+        prompt: 'consent',
+      },
+    },
+  })
+
+  if (error) {
+    console.error('Error signing in with Google:', error)
+    return { success: false, error: error.message }
+  }
+
+  return { success: true, data }
+}
+
+export async function handleOAuthCallback(code: string) {
+  try {
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code)
+    
+    if (error) {
+      console.error('Error exchanging code for session:', error)
+      return { success: false, error: error.message }
+    }
+
+    if (data.user) {
+      // Check if user profile exists, create if not
+      const { data: existingProfile } = await supabase
+        .from('user_profiles')
+        .select('*')
+        .eq('id', data.user.id)
+        .single()
+
+      if (!existingProfile) {
+        // Create profile for OAuth user
+        const { error: profileError } = await supabase
+          .from('user_profiles')
+          .insert({
+            id: data.user.id,
+            email: data.user.email!,
+            name: data.user.user_metadata?.full_name || data.user.user_metadata?.name,
+            first_name: data.user.user_metadata?.given_name,
+            last_name: data.user.user_metadata?.family_name,
+            avatar_url: data.user.user_metadata?.avatar_url,
+            role: getDefaultRole(),
+            is_active: true,
+          })
+
+        if (profileError) {
+          console.error('Error creating OAuth user profile:', profileError)
+        }
+      }
+    }
+
+    return { success: true, data }
+  } catch (error) {
+    console.error('OAuth callback error:', error)
+    return { success: false, error: 'An unexpected error occurred' }
+  }
 }

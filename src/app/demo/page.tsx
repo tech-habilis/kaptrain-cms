@@ -37,34 +37,26 @@ export default function DemoPage() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
                   <div>
-                    <div className="font-medium">admin@example.com</div>
+                    <div className="font-medium">superadmin@example.com</div>
                     <div className="text-sm text-gray-600">password123</div>
                   </div>
-                  <Badge variant="destructive">Admin</Badge>
+                  <Badge variant="destructive">Super Admin</Badge>
                 </div>
 
                 <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                   <div>
-                    <div className="font-medium">editor@example.com</div>
+                    <div className="font-medium">admin@example.com</div>
                     <div className="text-sm text-gray-600">password123</div>
                   </div>
-                  <Badge variant="default">Editor</Badge>
-                </div>
-
-                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                  <div>
-                    <div className="font-medium">author@example.com</div>
-                    <div className="text-sm text-gray-600">password123</div>
-                  </div>
-                  <Badge variant="secondary">Author</Badge>
+                  <Badge variant="default">Admin</Badge>
                 </div>
 
                 <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
-                    <div className="font-medium">viewer@example.com</div>
+                    <div className="font-medium">user@example.com</div>
                     <div className="text-sm text-gray-600">password123</div>
                   </div>
-                  <Badge variant="outline">Viewer</Badge>
+                  <Badge variant="outline">User</Badge>
                 </div>
               </div>
             </CardContent>
@@ -83,7 +75,7 @@ export default function DemoPage() {
             <CardContent>
               <div className="p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-gray-700">
-                  When you sign in with Google, you'll be assigned the "Viewer"
+                  When you sign in with Google, you'll be assigned the "User"
                   role by default. Contact an administrator to request role
                   changes.
                 </p>
@@ -105,16 +97,14 @@ export default function DemoPage() {
                 <thead>
                   <tr className="border-b">
                     <th className="text-left p-2">Permission</th>
-                    <th className="text-center p-2">Viewer</th>
-                    <th className="text-center p-2">Author</th>
-                    <th className="text-center p-2">Editor</th>
+                    <th className="text-center p-2">User</th>
                     <th className="text-center p-2">Admin</th>
+                    <th className="text-center p-2">Super Admin</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="p-2">Read Content</td>
-                    <td className="text-center p-2">✅</td>
                     <td className="text-center p-2">✅</td>
                     <td className="text-center p-2">✅</td>
                     <td className="text-center p-2">✅</td>
@@ -124,18 +114,15 @@ export default function DemoPage() {
                     <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">✅</td>
                     <td className="text-center p-2">✅</td>
-                    <td className="text-center p-2">✅</td>
                   </tr>
                   <tr className="border-b">
                     <td className="p-2">Edit Content</td>
                     <td className="text-center p-2">❌</td>
-                    <td className="text-center p-2">✅ (Own)</td>
-                    <td className="text-center p-2">✅ (All)</td>
-                    <td className="text-center p-2">✅ (All)</td>
+                    <td className="text-center p-2">✅</td>
+                    <td className="text-center p-2">✅</td>
                   </tr>
                   <tr className="border-b">
                     <td className="p-2">Delete Content</td>
-                    <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">✅</td>
                     <td className="text-center p-2">✅</td>
@@ -144,12 +131,10 @@ export default function DemoPage() {
                     <td className="p-2">Manage Users</td>
                     <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">❌</td>
-                    <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">✅</td>
                   </tr>
                   <tr>
                     <td className="p-2">Assign Roles</td>
-                    <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">❌</td>
                     <td className="text-center p-2">✅</td>
